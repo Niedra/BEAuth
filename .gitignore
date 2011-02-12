@@ -4,4 +4,5 @@ syntax:glob
 *.directory
 *.pyc
 BEAuth.egg-info/
+development.db
 

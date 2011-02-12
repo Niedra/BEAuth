@@ -10,8 +10,8 @@ def main(global_config, **settings):
     initialize_sql(engine)
     config = Configurator(settings=settings)
     config.add_static_view('static', 'beauth:static')
-    config.add_route('home', '/', view='beauth.views.my_view',
-                     view_renderer='templates/mytemplate.pt')
+    config.add_route('root', '/', view='beauth.views.root',
+                     view_renderer='base.mako')
     return config.make_wsgi_app()
 
 

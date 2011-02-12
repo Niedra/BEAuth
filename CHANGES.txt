@@ -1,5 +1,9 @@
 0.0
 ---
 
+- Changed to Mako templates
+- Renamed dev db to development.db
+- Renamed default route to root
+- Removed currently unneeded DB stuff from view.
 - Removed default static files.
 - Initial version
