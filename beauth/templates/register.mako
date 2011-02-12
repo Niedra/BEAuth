@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <head>
-    <title>${self.title()}</title>
+    <title>BEAuth</title>
 </head>
 <body>
-    ${self.body()}
+    Welcome to ${project}!
 </body>
 </html>

@@ -11,7 +11,7 @@ def main(global_config, **settings):
     config = Configurator(settings=settings)
     config.add_static_view('static', 'beauth:static')
     config.add_route('root', '/', view='beauth.views.root',
-                     view_renderer='base.mako')
+                     view_renderer='root.mako')
     return config.make_wsgi_app()
 
 
