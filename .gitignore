@@ -1,6 +1,7 @@
 syntax:glob
 *~
 *.
+*.coverage
 *.directory
 *.pyc
 BEAuth.egg-info/
