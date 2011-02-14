@@ -1,6 +1,7 @@
 0.0
 ---
 
+- Added user view
 - Added registration view
 - Added dependency on WTForms for form handling.
 - Changed to Mako templates

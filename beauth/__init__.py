@@ -14,6 +14,8 @@ def main(global_config, **settings):
                      view_renderer='root.mako')
     config.add_route('register', '/register', view='beauth.views.register',
                      view_renderer='register.mako')
+    config.add_route('view_user', '/{username}', view='beauth.views.view',
+                     view_renderer='view.mako')
     return config.make_wsgi_app()
 
 

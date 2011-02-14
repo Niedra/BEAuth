@@ -8,6 +8,11 @@ from beauth.models import User
 def root(request):
     return {'project':'BEAuth'}
 
+def view(request):
+    username = request.matchdict['username']
+    user = User.by_name(name=username)
+    return {'user':user, 'project':'BEAuth'}
+
 def register(request):
     user = User(name=None, password=None, email=None)
     form = RegistrationForm(request.POST)
@@ -16,5 +21,5 @@ def register(request):
         user.password = form.password.data
         user.email = form.email.data
         DBSession.add(user)
-        return HTTPFound(location = route_url('root', request))
-    return {'form':form, 'project':'BEAuth', 'request':request.POST}
+        return HTTPFound(location = route_url('view_user', request, username=user.name))
+    return {'form':form, 'project':'BEAuth'}

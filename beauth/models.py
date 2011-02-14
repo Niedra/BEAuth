@@ -27,6 +27,11 @@ class User(Base):
         self.password = password
         self.email = email
 
+    @classmethod
+    def by_name(cls, name):
+        name = name.lower()
+        return DBSession.query(cls).filter(cls.name == name).first()
+
 def populate():
     session = DBSession()
     user = User(name=u'admin', password=u'letmein', email=u'noreply@example.com')
