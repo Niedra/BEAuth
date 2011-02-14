@@ -12,7 +12,6 @@ def register(request):
     user = User(name=None, password=None, email=None)
     form = RegistrationForm(request.POST)
     if request.method == 'POST' and form.validate():
-        return request.POST
         user.name = form.name.data
         user.password = form.password.data
         user.email = form.email.data
