@@ -12,6 +12,8 @@ def main(global_config, **settings):
     config.add_static_view('static', 'beauth:static')
     config.add_route('root', '/', view='beauth.views.root',
                      view_renderer='root.mako')
+    config.add_route('list_users', '/list', view='beauth.views.list',
+                     view_renderer='list.mako')
     config.add_route('register', '/register', view='beauth.views.register',
                      view_renderer='register.mako')
     config.add_route('view_user', '/{username}', view='beauth.views.view',

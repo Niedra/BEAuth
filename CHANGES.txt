@@ -1,6 +1,8 @@
 0.0
 ---
 
+- Added pagination for user list
+- Added user list view
 - Added user view
 - Added registration view
 - Added dependency on WTForms for form handling.
