@@ -1,10 +1,10 @@
 <%inherit file="base.mako"/>
 
 <%def name="title()">
-    BEAuth - Register
+    BEAuth - Login
 </%def>
 
-<h1>Register</h1>
+<h1>Login</h1>
 
 <form method="POST" action="">
 % for field in form:

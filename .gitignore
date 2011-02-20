@@ -6,4 +6,5 @@ syntax:glob
 *.pyc
 BEAuth.egg-info/
 development.db
+data/
 

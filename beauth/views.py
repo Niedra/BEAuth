@@ -1,10 +1,12 @@
 from pyramid.httpexceptions import HTTPFound
 from pyramid.url import current_route_url
+from pyramid.url import route_url
 
 from webhelpers import paginate
 
 from beauth.lib.paginate import list_users_url_generator
 from beauth.forms.user import RegistrationForm
+from beauth.forms.user import LoginForm
 from beauth.models import DBSession
 from beauth.models import User
 
@@ -15,6 +17,26 @@ def view(request):
     username = request.matchdict['username']
     user = User.by_name(name=username)
     return {'user':user, 'project':'BEAuth'}
+
+def login(request):
+    form = LoginForm(request.POST)
+    session = request.session
+    if request.method == 'POST' and form.validate():
+        user = User.by_name(name=form.name.data)
+
+        if user and user.check_password(form.password.data):
+            usersession = {'name': user.name}
+            session["user"] = usersession
+            session.save()
+            return HTTPFound(location = route_url('root', request))
+
+    return {'form':form, 'project':'BEAuth'}
+
+def logout(request):
+    session = request.session
+    session["user"] = None
+    session.delete()
+    return HTTPFound(location = route_url('root', request))
 
 def register(request):
     user = User(name=None, password=None, email=None)
