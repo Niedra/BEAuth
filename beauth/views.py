@@ -64,3 +64,7 @@ def list(request):
 
     currentPage = paginate.Page(users, page=page_number, items_per_page=10, url=list_users_url_generator)
     return {'currentPage':currentPage, 'users':currentPage.items}
+
+def debug(request):
+    session = request.session
+    return {'session':session, 'project':'BEAuth'}
