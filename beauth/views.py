@@ -50,15 +50,8 @@ def register(request):
     return {'form':form, 'project':'BEAuth'}
 
 def list(request):
-    try:
-        page_number = request.GET['page']
-    except:
-        page_number = '1'
-
-    try:
-        query = request.GET['query']
-    except:
-        query = ''
+    page_number = request.GET.get('page', '1')
+    query = request.GET.get('query', '')
 
     users = DBSession.query(User)
 
