@@ -11,9 +11,10 @@ class ViewUserTests(unittest.TestCase):
     def tearDown(self):
         testing.tearDown()
         
-    def test_it(self):
+    def test_query_admin_user(self):
         from beauth.views import view
         request = testing.DummyRequest()
         request.matchdict['username'] = u'admin'
         response = view(request)
         self.assertEqual(response['user'].name, u'admin')
+        self.assertEqual(response['user'].email, u'noreply@example.com')

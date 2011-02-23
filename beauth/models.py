@@ -39,7 +39,7 @@ class User(Base):
     @password.setter
     def password(self, value):
         hashed = bcrypt.encode(value)
-        self._password = hashed
+        self._password = unicode(hashed)
 
     @classmethod
     def by_name(cls, name):
