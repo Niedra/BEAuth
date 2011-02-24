@@ -1,5 +1,4 @@
 from pyramid.httpexceptions import HTTPFound
-from pyramid.url import current_route_url
 from pyramid.url import route_url
 
 from webhelpers import paginate

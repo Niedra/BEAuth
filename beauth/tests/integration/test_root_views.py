@@ -1,8 +1,6 @@
 import unittest
 from pyramid import testing
 
-from beauth.tests import _initTestingDB
-
 class ViewRootTests(unittest.TestCase):
     def setUp(self):
         self.config = testing.setUp()
