@@ -10,6 +10,7 @@ def main(global_config, **settings):
     engine = engine_from_config(settings, 'sqlalchemy.')
     initialize_sql(engine)
     config = Configurator(settings=settings)
+    config.scan('beauth.models') # Import models
     session_factory = session_factory_from_settings(settings)
     config.set_session_factory(session_factory)
     config.add_static_view('static', 'beauth:static')

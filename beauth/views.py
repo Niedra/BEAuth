@@ -7,7 +7,7 @@ from beauth.lib.paginate import list_users_url_generator
 from beauth.forms.user import RegistrationForm
 from beauth.forms.user import LoginForm
 from beauth.models import DBSession
-from beauth.models import User
+from beauth.models.user import User
 
 def root(request):
     return {'project':'BEAuth'}
