@@ -1,3 +1,5 @@
+import transaction
+
 from sqlalchemy.exc import IntegrityError
 
 from sqlalchemy.ext.declarative import declarative_base 
@@ -23,7 +25,8 @@ def populate():
     from beauth.models.user import User
     session = DBSession()
     user = User(name=u'admin', password=u'password',
-                email=u'noreply@example.com')
+                email=u'noreply@example.com', activated=True,
+                verify_code='')
     session.add(user)
     session.flush()
     transaction.commit()

@@ -2,6 +2,7 @@ import cryptacular.bcrypt
 import transaction
 
 from sqlalchemy import Column
+from sqlalchemy import Boolean
 from sqlalchemy import Integer
 from sqlalchemy import Unicode
 
@@ -17,13 +18,17 @@ class User(Base):
     id = Column(Integer, primary_key=True)
     name = Column(Unicode(255), unique=True)
     email = Column(Unicode(255), unique=True)
+    activated = Column(Boolean, default=False)
+    verify_code = Column(Unicode(20))
 
     _password = Column(Unicode(255))
 
-    def __init__(self, name, password, email):
+    def __init__(self, name, password, email, activated, verify_code):
         self.name = name
         self.password = password
         self.email = email
+        self.activated = activated
+        self.verify_code = verify_code
 
     @hybrid_property
     def password(self):
