@@ -37,7 +37,7 @@ class User(Base):
         return self._password
 
     @password.setter
-    def password(self, value):
+    def set_password(self, value):
         hashed = bcrypt.encode(value)
         self._password = unicode(hashed)
 
