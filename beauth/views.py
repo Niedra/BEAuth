@@ -38,7 +38,7 @@ def logout(request):
     return HTTPFound(location = route_url('root', request))
 
 def register(request):
-    user = User(name=None, password='', email=None)
+    user = User(name=None, password='', email=None, activated=True)
     form = RegistrationForm(request.POST)
     if request.method == 'POST' and form.validate():
         user.name = form.name.data

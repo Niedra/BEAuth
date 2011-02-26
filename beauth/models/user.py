@@ -23,7 +23,7 @@ class User(Base):
 
     _password = Column(Unicode(255))
 
-    def __init__(self, name, password, email, activated, verify_code):
+    def __init__(self, name, password, email, activated, verify_code=None):
         self.name = name
         self.password = password
         self.email = email
