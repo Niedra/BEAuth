@@ -17,6 +17,8 @@ def main(global_config, **settings):
                      view_renderer='root.mako')
     config.add_route('debug', '/debug', view='beauth.views.debug',
                      view_renderer='debug.mako')
+    config.add_route('search', '/search', view='beauth.views.search',
+                     view_renderer='search.mako')
     config.add_route('list_users', '/list', view='beauth.views.list',
                      view_renderer='list.mako')
     config.add_route('login', '/login', view='beauth.views.login',

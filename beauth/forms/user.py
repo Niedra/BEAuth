@@ -10,3 +10,7 @@ class LoginForm(Form):
     name         = TextField(u'Username', [validators.Length(min=4, max=25)])
     password     = PasswordField(u'Password', [validators.Length(min=4, max=25)])
     submit       = SubmitField(u'Submit')
+
+class SearchForm(Form):
+    name         = TextField(u'Username', [validators.Length(min=4, max=25)])
+    submit       = SubmitField(u'Submit')

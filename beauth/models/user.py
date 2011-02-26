@@ -43,5 +43,9 @@ class User(Base):
     def by_name(cls, name):
         return DBSession.query(cls).filter(cls.name == name).first()
 
+    @classmethod
+    def like(cls, name):
+        return DBSession.query(cls).filter(cls.name.like('%'+name+'%')).all()
+
     def check_password(self, password):
         return bcrypt.check(self.password, password) 

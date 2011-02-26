@@ -6,6 +6,7 @@ from webhelpers import paginate
 from beauth.lib.paginate import list_users_url_generator
 from beauth.forms.user import RegistrationForm
 from beauth.forms.user import LoginForm
+from beauth.forms.user import SearchForm
 from beauth.models import DBSession
 from beauth.models.user import User
 
@@ -56,6 +57,14 @@ def list(request):
 
     currentPage = paginate.Page(users, page=page_number, items_per_page=10, url=list_users_url_generator)
     return {'currentPage':currentPage, 'users':currentPage.items}
+
+def search(request):
+    form = SearchForm(request.POST)
+    if request.method == 'POST' and form.validate():
+        users = User.like(name=form.name.data)
+        return {'form':form, 'users':users, 'project':'BEAuth'}
+
+    return {'form':form, 'project':'BEAuth'}
 
 def debug(request):
     session = request.session
