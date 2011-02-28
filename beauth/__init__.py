@@ -26,6 +26,8 @@ def main(global_config, **settings):
     config.add_route('logout', '/logout', view='beauth.views.logout')
     config.add_route('register', '/register', view='beauth.views.register',
                      view_renderer='register.mako')
+    config.add_route('edit_user', '/edit/{username}', view='beauth.views.edit',
+                     view_renderer='edit.mako')
     config.add_route('view_user', '/{username}', view='beauth.views.view',
                      view_renderer='view.mako')
     initialize_sql(engine)

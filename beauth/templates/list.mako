@@ -8,16 +8,17 @@
 
 % if users:
 <table>
-	<tr>
-		<th>ID</th>
-		<th>Name</th>
-	</tr>
-	% for user in users:
-		<tr>
-			<td>${user.id}</td>
-			<td><a href="/${user.name}">${user.name}</a></td>
-		</tr>
-	% endfor
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+    </tr>
+    % for user in users:
+        <tr>
+            <td>${user.id}</td>
+            <td><a href="/${user.name}">${user.name}</a></td>
+            <td><a href="/edit/${user.name}">Edit</a></td>
+        </tr>
+    % endfor
 </table>
 % else:
 <p>Sorry, no users found.</p>

@@ -7,6 +7,7 @@ from beauth.lib.paginate import list_users_url_generator
 from beauth.forms.user import RegistrationForm
 from beauth.forms.user import LoginForm
 from beauth.forms.user import SearchForm
+from beauth.forms.user import EditForm
 from beauth.models import DBSession
 from beauth.models.user import User
 
@@ -57,6 +58,18 @@ def list(request):
 
     currentPage = paginate.Page(users, page=page_number, items_per_page=10, url=list_users_url_generator)
     return {'currentPage':currentPage, 'users':currentPage.items}
+
+def edit(request):
+    username = request.matchdict['username']
+    user = User.by_name(name=username)
+    form = EditForm(request.POST)
+    if request.method == 'POST' and form.validate():
+        user.password = form.password.data
+        user.email = form.email.data
+        DBSession.add(user)
+        return HTTPFound(location = route_url('view_user', request, username=user.name))
+    return {'form':form, 'username':username, 'project':'BEAuth'}
+
 
 def search(request):
     form = SearchForm(request.POST)
